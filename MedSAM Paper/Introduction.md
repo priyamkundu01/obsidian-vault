@@ -1,0 +1,20 @@
+MEDICAL image segmentation is an important task in medical image analysis, crucial for many clinical applications. Accurate segmentation helps clearly define anatomical structures and diseased areas, which is essential for disease diagnosis, treatment planning, and monitoring.
+
+It is widely used in dermoscopy, CT, MRI, colonoscopy, and ultrasound.
+
+Traditional U-Net-based segmentation methods have demonstrated high segmentation performance [2]–[5]. However, these models are mostly designed for specific tasks and often face challenges in transferability to other domains.
+
+Consequently, with the recent rise of foundation models like the Segment Anything Model (SAM) [6], and MedSAM [7] have shown its universal applicability and precise segmentation capabilities across various datasets.
+
+Crucially, these models are trained on all datasets together and utilize different prompts to achieve more accurate segmentation results.
+
+As mentioned in [8], highquality prompts can lead to good performance. Hence, this study focuses on how to automatically obtain effective prompts during testing time without the need to retrain model.
+
+![[Pasted image 20260705101550.png]]
+
+
+As shown in Fig. 1 (a), we illustrate the segmentation performance of SAM and MedSAM across five datasets using various box prompts, including prompts with different aspect ratios, and positions within the image. The purpose of these variations in box prompts is to reveal a significant impact of box position on the resulting segmentation outcomes.
+
+Furthermore, as detailed in [8], the effect of point prompts on segmentation performance is demonstrated.
+
+Therefore, the other key focus of this study is to train MedSAM to adapt to different types of prompts. Finally, as shown in Fig. 1 (b), MedSAM’s approach of producing a single segmentation result in a single step lacks reliability. This study aims to leverage reliability to automatically obtain effective prompts, thereby achieving better segmentation results. Uncertainty is one of crucial metrics for assessing the model’s confidence or reliability. Existing methods for uncertainty estimation encompass dropout-based methods [9], ensemble-based methods [10], entropy-based methods [11], evidential-based approaches [12], and deterministic-based methods [13]. Given the extensive parameters involved in MedSAM, building a new model with uncertainty estimation from scratch would demand significant computational resources and time. Furthermore, a key aspect of this study is exploring how to utilize estimated pixel-level uncertainty to obtain reliable prompts of different types. To address these challenges, our study introduces the MedSAM-U as illustrated in Fig. 1 (b) 2), an automatic uncertainty-guided auto multi-prompt framework for adapting reliable MedSAM. MedSAM-U integrates box and point prompts to enhance segmentation accuracy. Subsequently, it then employs Uncertainty-Guided Multi-Prompt (UGMP) to effectively estimate the uncertainties associated with the prompts and their initial segmentation results. Our approach further introduces a novel Uncertainty-Guided Prompt Adaptation (UGPA) technique, enabling the auto refinement of multiprompt to enhance segmentation reliability and accuracy. The contributions of this work are summarized as follows. • We propose MedSAM-U, which leverages uncertainty estimation and guidance to automatically predict reliable segmentation results. To the best of our knowledge, this is the first attempt at using uncertainty-guided adaptation of multiprompt to achieve a reliable MedSAM. • We employ Uncertainty-Guided Multi-Prompt (UGMP) to estimate the uncertainty of different prompts in MedSAM without requiring additional training parameters. • We introduce Uncertainty-Guided Prompt Adaptation (UGPA) to automatically obtain reliable prompts using the estimated uncertainty in the testing time, leading to accurate segmentation predictions. • We conducted unified training and testing on five different modalities (Dermoscopy, Colonoscopy, Ultrasound, CT, and MRI) datasets, demonstrating the reliability and accuracy of MedSAM-U 1 .
