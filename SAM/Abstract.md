@@ -7,6 +7,7 @@ The prompt tells GPT **what you want**.
 > Can we do the same thing for images?
 
 Instead of text prompts, we give **visual prompts**.
+A prompt tells the model **what to segment**.
 
 Possible prompts:
 - Point Prompt
@@ -17,6 +18,7 @@ Possible prompts:
 So "promptable" simply means
 
 > **The model can accept different kinds of instructions telling it what to segment.**
+
 
 **Philosophy of foundation models**
 
@@ -29,6 +31,13 @@ Requested Object
 The same model works.
 Only the prompt changes.
 
+### Promptable Model
+
+A promptable model can accept different kinds of prompts and generate the required segmentation.
+
+Instead of changing the model,
+
+we only change the prompt.
 ### Transfer Learning
 
 Learning something once
@@ -99,13 +108,28 @@ Done.
 
 > **The model is not trained to solve one specific task. It is trained to become generally useful.**
 
-| Term                   | Simple meaning                                                                          |
-| ---------------------- | --------------------------------------------------------------------------------------- |
-| **Promptable**         | The model accepts instructions (points, boxes, text, masks) telling it what to segment. |
-| **Transfer**           | Knowledge learned during training can be reused on new problems.                        |
-| **Zero-shot**          | The model works on new data or tasks without additional training.                       |
-| **Image distribution** | The kind or domain of images (natural photos, medical images, satellite images, etc.).  |
-
+| Term                          | Simple meaning                                                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Promptable**                | The model accepts instructions (points, boxes, text, masks) telling it what to segment.                            |
+| **Transfer**                  | Knowledge learned during training can be reused on new problems.                                                   |
+| **Zero-shot**                 | The model works on new data or tasks without additional training.                                                  |
+| **Image distribution**        | The kind or domain of images (natural photos, medical images, satellite images, etc.).                             |
+| **Foundation Model**          | A foundation model is a large general-purpose model trained on diverse data so it can solve many downstream tasks. |
+| **Fully Supervised Learning** | Training using manually labeled ground truth.                                                                      |
+| **Image Segmentation**        | Classifying every pixel into an object or region.                                                                  |
+| **Segmentation Mask**         | Pixel-level binary or labeled image showing the object.                                                            |
+| **Prompt**                    | Instruction telling the model what to segment.                                                                     |
+| **Promptable Segmentation**   | Segmenting an object based on a user/system prompt.                                                                |
+| **Promptable Model**          | A model that accepts different prompt types.                                                                       |
+| **Foundation Model**          | General-purpose model reusable across many tasks.                                                                  |
+| **Zero-shot**                 | Solving a new task without retraining.                                                                             |
+| **Transfer Learning**         | Applying learned knowledge to new tasks.                                                                           |
+| **Image Distribution**        | Type/domain of images (medical, natural, satellite, etc.).                                                         |
+| **Fully Supervised**          | Training with manually labeled ground-truth masks.                                                                 |
+| **Data Engine**               | Iterative cycle where the model helps create more training data.                                                   |
+| **Efficient Model**           | Fast enough for real-time practical use, especially annotation.                                                    |
+| **Licensed Images**           | Legally acquired images.                                                                                           |
+| **Privacy Respecting**        | Images processed to protect personal privacy.                                                                      |
 They built a general model, and surprisingly, it performs almost as well as—or sometimes even better than—models that were specially trained for individual tasks.
 
 It is a a **general-purpose segmentation model**.
